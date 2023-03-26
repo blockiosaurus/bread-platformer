@@ -66,7 +66,7 @@ export const loadLevels = function(scene) {
   scene.load.json("level:0", "./assets/phaser/data/level00.json");
   scene.load.json("level:1", "./assets/phaser/data/level01.json");
   scene.load.json("level:2", "./assets/phaser/data/level02.json");
-  scene.load.json("level:0", "./assets/phaser/data/level03.json");
+  scene.load.json("level:3", "./assets/phaser/data/level03.json");
 };
 
 export const createSfx = function(scene) {
