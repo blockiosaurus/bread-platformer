@@ -9,6 +9,7 @@ import {
 } from "../helpers";
 import Hero from "../characters/Hero";
 import Spider from "../characters/Spider";
+import Mouse from "../characters/Mouse";
 
 class PlayScene extends Scene {
   cursors = null;
@@ -28,6 +29,7 @@ class PlayScene extends Scene {
   coins = null;
   hero: Hero = null;
   spiders = null;
+  mice = null;
   key = null;
 
   constructor() {
@@ -81,6 +83,7 @@ class PlayScene extends Scene {
 
     this.coins = this.add.group();
     this.spiders = this.add.group();
+    this.mice = this.add.group();
 
     data.decoration.forEach(deco => {
       this.bgDecorations.add(
@@ -92,7 +95,7 @@ class PlayScene extends Scene {
 
     this.spawnDoor(data.door.x, data.door.y);
     this.spawnKey(data.key.x, data.key.y);
-    this.spawnCharacters({ hero: data.hero, spiders: data.spiders });
+    this.spawnCharacters({ hero: data.hero, spiders: data.spiders, mice: data.mice });
   }
 
   private spawnPlatform(platform) {
@@ -171,9 +174,20 @@ class PlayScene extends Scene {
       const spiderSprite = new Spider({
         scene: this,
         x: spider.x,
-        y: spider.y
+        y: spider.y,
+        key: "spider"
       });
       this.spiders.add(spiderSprite);
+    });
+
+    data.mice.forEach(mouse => {
+      const mouseSprite = new Mouse({
+        scene: this,
+        x: mouse.x,
+        y: mouse.y,
+        key: "mouse"
+      });
+      this.mice.add(mouseSprite);
     });
   }
 
@@ -225,6 +239,8 @@ class PlayScene extends Scene {
     this.physics.add.collider(this.hero, this.platforms);
     this.physics.add.collider(this.spiders, this.platforms);
     this.physics.add.collider(this.spiders, this.enemyWalls);
+    this.physics.add.collider(this.mice, this.platforms);
+    this.physics.add.collider(this.mice, this.enemyWalls);
 
     this.physics.add.overlap(
       this.hero,
@@ -236,6 +252,13 @@ class PlayScene extends Scene {
     this.physics.add.overlap(
       this.hero,
       this.spiders,
+      this.onHeroVsEnemy,
+      null,
+      this
+    );
+    this.physics.add.overlap(
+      this.hero,
+      this.mice,
       this.onHeroVsEnemy,
       null,
       this

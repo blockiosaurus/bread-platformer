@@ -1,6 +1,5 @@
 {
   "name": "phaser-3-react-platformer",
-  "homepage": "https://furkantanyol.github.io/phaser-3-react-typescript-platformer/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

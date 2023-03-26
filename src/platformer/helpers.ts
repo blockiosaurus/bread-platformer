@@ -1,11 +1,11 @@
 export const loadImages = function(scene) {
-  scene.load.image("background", "./assets/phaser/images/background.png");
-  scene.load.image("ground", "./assets/phaser/images/ground.png");
-  scene.load.image("grass:8x1", "./assets/phaser/images/grass_8x1.png");
-  scene.load.image("grass:6x1", "./assets/phaser/images/grass_6x1.png");
-  scene.load.image("grass:4x1", "./assets/phaser/images/grass_4x1.png");
-  scene.load.image("grass:2x1", "./assets/phaser/images/grass_2x1.png");
-  scene.load.image("grass:1x1", "./assets/phaser/images/grass_1x1.png");
+  scene.load.image("background", "./assets/phaser/images/kitchen_background.png");
+  scene.load.image("ground", "./assets/phaser/images/counter.png");
+  scene.load.image("grass:8x1", "./assets/phaser/images/counter_8x1.png");
+  scene.load.image("grass:6x1", "./assets/phaser/images/counter_6x1.png");
+  scene.load.image("grass:4x1", "./assets/phaser/images/counter_4x1.png");
+  scene.load.image("grass:2x1", "./assets/phaser/images/counter_2x1.png");
+  scene.load.image("grass:1x1", "./assets/phaser/images/counter_1x1.png");
   scene.load.image(
     "invisible-wall",
     "./assets/phaser/images/invisible_wall.png"
@@ -24,9 +24,17 @@ export const loadSpritesheets = function(scene) {
     frameWidth: 42,
     frameHeight: 32
   });
+  scene.load.spritesheet("mouse", "./assets/phaser/images/mouse.png", {
+    frameWidth: 59,
+    frameHeight: 35
+  });
   scene.load.spritesheet("hero", "./assets/phaser/images/hero.png", {
     frameWidth: 36,
     frameHeight: 42
+  });
+  scene.load.spritesheet("bread", "./assets/phaser/images/bread.png", {
+    frameWidth: 32,
+    frameHeight: 32
   });
   scene.load.spritesheet("door", "./assets/phaser/images/door.png", {
     frameWidth: 42,
@@ -57,6 +65,8 @@ export const loadAudio = function(scene) {
 export const loadLevels = function(scene) {
   scene.load.json("level:0", "./assets/phaser/data/level00.json");
   scene.load.json("level:1", "./assets/phaser/data/level01.json");
+  scene.load.json("level:2", "./assets/phaser/data/level02.json");
+  scene.load.json("level:0", "./assets/phaser/data/level03.json");
 };
 
 export const createSfx = function(scene) {

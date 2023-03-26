@@ -11,6 +11,7 @@ class Hero extends Phaser.GameObjects.Sprite {
   SPEED = 200;
   JUMP_SPEED = 600;
   BOUNCE_SPEED = 200;
+  SCALE = 2;
 
   constructor(params) {
     super(params.scene, params.x, params.y, params.key, params.frame);
@@ -24,7 +25,9 @@ class Hero extends Phaser.GameObjects.Sprite {
 
     this.setFlipX(false);
     this.setOrigin(0, 0.5);
-    this.body.setOffset(3, 10);
+    this.body.setOffset(0, 0);
+    this.body.setSize( 16, 32, true);
+    this.setScale(this.SCALE);
 
     this.currentScene.events.on("update", () => {
       this.body && this.update();
@@ -135,29 +138,29 @@ class Hero extends Phaser.GameObjects.Sprite {
   private createAnims(scene: PlayScene) {
     scene.anims.create({
       key: "stop",
-      frames: scene.anims.generateFrameNumbers("hero", {
+      frames: scene.anims.generateFrameNumbers("bread", {
         frames: [0]
       })
     });
     scene.anims.create({
       key: "run",
-      frames: scene.anims.generateFrameNumbers("hero", {
-        frames: [1, 2]
+      frames: scene.anims.generateFrameNumbers("bread", {
+        frames: [3, 4, 5]
       }),
       frameRate: 8,
       repeat: -1
     });
     scene.anims.create({
       key: "jump",
-      frames: scene.anims.generateFrameNumbers("hero", {
-        frames: [3]
+      frames: scene.anims.generateFrameNumbers("bread", {
+        frames: [1]
       })
     });
 
     scene.anims.create({
       key: "fall",
-      frames: scene.anims.generateFrameNumbers("hero", {
-        frames: [4]
+      frames: scene.anims.generateFrameNumbers("bread", {
+        frames: [2]
       })
     });
   }
