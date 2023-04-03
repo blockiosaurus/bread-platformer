@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import {
     createTransferCheckedInstruction,
     getAssociatedTokenAddressSync,
+    getOrCreateAssociatedTokenAccount,
     TOKEN_PROGRAM_ID,
     transferChecked,
 } from "@solana/spl-token";
@@ -36,14 +37,14 @@ async function transfer(
     const connection = new Connection("https://rpc.helius.xyz/?api-key=9721adc2-b436-4fd6-9fae-2cdefd256712", { confirmTransactionInitialTimeout: 600 });
 
     const source_ata = getAssociatedTokenAddressSync(mint, source.publicKey);
-    const target_ata = getAssociatedTokenAddressSync(mint, target);
+    const target_ata = await getOrCreateAssociatedTokenAccount(connection, source, mint, target, true, "finalized", { skipPreflight: true });
 
     const signature = await transferChecked(
         connection, // connection
         source, // payer
         source_ata, // from (should be a token account)
         mint, // mint
-        target_ata, // to (should be a token account)
+        target_ata.address, // to (should be a token account)
         source, // from's owner
         1, // amount, if your deciamls is 8, send 10^8 for 1 token
         0 // decimals
