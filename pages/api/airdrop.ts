@@ -16,10 +16,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const token_keypair = loadEnvKey();
     const token_mint = new PublicKey(process.env.NEXT_PUBLIC_TOKEN_MINT as string);
     try {
-    transfer(token_keypair, wallet_address, token_mint)
-        .then((signature) => {
-            res.status(200).json({ signature: signature });
-        });
+        transfer(token_keypair, wallet_address, token_mint)
+            .then((signature) => {
+                res.status(200).json({ signature: signature });
+            });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: error });
