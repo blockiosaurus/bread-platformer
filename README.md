@@ -1,26 +1,42 @@
-# Phaser 3 + React + TypeScript - Old School Platformer Game
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-DEMO: https://furkantanyol.github.io/phaser-3-react-typescript-platformer/
+## Getting Started
 
-![phaser-3-react](https://storage.googleapis.com/spaceocean/phaser-react.png)
+First, install all packages
+```bash
+ yarn
+```
 
-Phaser 3 is the latest version of one of the best game development libraries written in JavaScript that allows implementing your ideas into actual game form easily.
+then, run the development server:
 
-## Motivation
+Then
+```bash
+# or
+yarn dev
+# or
+npm run dev
+# or
+pnpm dev
+```
 
-When I first wanted to explore game development using JavaScript I came across [MDN's Phaser 2 tutorial](https://mozdevs.github.io/html5-games-workshop/en/guides/platformer/start-here/) and really liked the old school platformer game. I also like using React and thought it would be cool and convenient to create a Phaser game along with using React and it's components.
-Then, I realized Phaser has a new version [Phaser 3](https://phaser.io/phaser3) which has a lot of improvements on v2. However, the new version was not backwards compatible, there were some differences in code.
-With this repo, I wanted to help you out with these differences and implement the same cool old school platformer game in Phaser 3. What I’ve gotten working is a very rough example to show how things might work together!
+ Open [http://localhost:3000](http://localhost:3000) with Chrome, and go to Inspector -> Performance monitor  notice that cpu cost is around 15-17%( MBP 2023 16G )
 
-## Tools & Libraries Used
+![image](public/3.60.beta-21.png)
 
-- Phaser 3
-- Create React App
-- TypeScript
 
-## Installing & Running The App
 
-- `yarn install && yarn start`
-- Then go to `http://localhost:3000`
 
-You can find more information about Phaser and game development from their website: [Phaser](https://phaser.io)
+Switch to different branch(3.55.2)
+and reinstall the packages again , and run the server
+```bash
+ yarn
+ yarn dev
+```
+Monit the Performance monitor tab, and the cpu cost is around 5% - 8%
+
+![image](public/3.55.2.png)
+
+
+I have no idea why this is happening. I have tested two different versions using React (Vite+React) and cannot distinguish much difference in performance. However, when I use Next.js, it occurs. Is this a problem with Next.js? Did I miss any core concept of Next.js?"
+
+

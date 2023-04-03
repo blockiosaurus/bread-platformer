@@ -1,0 +1,20 @@
+{
+  "platforms": [
+    { "image": "ground", "x": 0, "y": 546 },
+    { "image": "grass:1x1", "x": 918, "y": 420 },
+    { "image": "grass:1x1", "x": 834, "y": 294 },
+    { "image": "grass:1x1", "x": 750, "y": 168 },
+    { "image": "grass:1x1", "x": 0, "y": 420 },
+    { "image": "grass:1x1", "x": 84, "y": 294 },
+    { "image": "grass:1x1", "x": 168, "y": 168 }
+  ],
+  "decoration": [],
+  "coins": [],
+  "hero": { "x": 21, "y": 425 },
+  "rats": [
+    { "x": 525, "y": 225}
+  ],
+  "flies": [],
+  "door": { "x": 525, "y": 546 },
+  "key": { "x": 525, "y": 100 }
+}
