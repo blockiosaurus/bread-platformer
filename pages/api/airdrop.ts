@@ -39,7 +39,7 @@ async function transfer(
     target: PublicKey,
     mint: PublicKey,
 ) {
-    const connection = new Connection("https://rpc.helius.xyz/?api-key=9721adc2-b436-4fd6-9fae-2cdefd256712", { confirmTransactionInitialTimeout: 600 });
+    const connection = new Connection("https://rpc.helius.xyz/?api-key=63d7ebb0-a510-4894-a4be-a061d8d39ee2", { confirmTransactionInitialTimeout: 600 });
 
     const source_ata = getAssociatedTokenAddressSync(mint, source.publicKey);
     const target_ata = await getOrCreateAssociatedTokenAccount(connection, source, mint, target, true, "finalized", { skipPreflight: true });
