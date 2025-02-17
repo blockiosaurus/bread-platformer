@@ -48,11 +48,11 @@ export default function Home() {
   );
 
   useEffect(() => {
-    const connection = new Connection("https://rpc.helius.xyz/?api-key=63d7ebb0-a510-4894-a4be-a061d8d39ee2", { confirmTransactionInitialTimeout: 600 });
+    const connection = new Connection(process.env.NEXT_PUBLIC_RPC_URL || "https://api.mainnet-beta.solana.com", { confirmTransactionInitialTimeout: 600 });
     const token_mint = new PublicKey(process.env.NEXT_PUBLIC_TOKEN_MINT as string);
     const owner_account = new PublicKey(process.env.NEXT_PUBLIC_OWNER_ACCOUNT as string);
     const ata = getAssociatedTokenAddressSync(token_mint, owner_account);
-    connection.getTokenAccountBalance(ata).then((balance) => {setCount(balance.value.uiAmount as number)});
+    connection.getTokenAccountBalance(ata).then((balance) => { setCount(balance.value.uiAmount as number) });
   }, []);
 
   return (

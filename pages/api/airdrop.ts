@@ -39,7 +39,7 @@ async function transfer(
     target: PublicKey,
     mint: PublicKey,
 ) {
-    const connection = new Connection("https://rpc.helius.xyz/?api-key=63d7ebb0-a510-4894-a4be-a061d8d39ee2", { confirmTransactionInitialTimeout: 600 });
+    const connection = new Connection(process.env.RPC_URL || "https://api.mainnet-beta.solana.com", { confirmTransactionInitialTimeout: 600 });
 
     const source_ata = getAssociatedTokenAddressSync(mint, source.publicKey);
     const target_ata = await getOrCreateAssociatedTokenAccount(connection, source, mint, target, true, "finalized", { skipPreflight: true });
@@ -51,8 +51,8 @@ async function transfer(
         mint, // mint
         target_ata.address, // to (should be a token account)
         source, // from's owner
-        1, // amount, if your deciamls is 8, send 10^8 for 1 token
-        0 // decimals
+        100 * (10 ** 6), // amount, if your deciamls is 8, send 10^8 for 1 token
+        6 // decimals
     );
 
     return signature;
